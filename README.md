@@ -1,8 +1,6 @@
-# Duko Tools 🦆
+# dukotools
 
 A premium, elegant, and secure suite of client-side web tools for developers and everyday users. Calculate percentages, analyze text, split or merge PDFs, and more—all directly in your browser without uploading files to any server.
-
-![Duko Tools](assets/logo.png)
 
 ## ✨ Features
 
