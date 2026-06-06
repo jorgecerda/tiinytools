@@ -2,7 +2,7 @@
 // Polls a CloudConvert job by ID and returns its status + download URL.
 
 exports.handler = async (event) => {
-    const allowedOrigins = ['https://dukotools.netlify.app', 'http://localhost:8888', 'http://localhost:8000'];
+    const allowedOrigins = ['https://tiinytools.netlify.app', 'http://localhost:8888', 'http://localhost:8000'];
     const origin = event.headers.origin || '';
     const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
 

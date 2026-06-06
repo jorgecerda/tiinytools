@@ -3,7 +3,7 @@
 // The API key is stored as a Netlify environment variable (CLOUDCONVERT_API_KEY).
 
 exports.handler = async (event) => {
-    const allowedOrigins = ['https://dukotools.netlify.app', 'http://localhost:8888', 'http://localhost:8000'];
+    const allowedOrigins = ['https://tiinytools.netlify.app', 'http://localhost:8888', 'http://localhost:8000'];
     const origin = event.headers.origin || '';
     const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
 
@@ -62,7 +62,7 @@ exports.handler = async (event) => {
                         archive_multiple_files: false,
                     },
                 },
-                tag: 'duko-tools',
+                tag: 'tiiny-tools',
             }),
         });
 
