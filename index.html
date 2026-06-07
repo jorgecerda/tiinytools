@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tiinytools | Premium Developer & Document Utilities</title>
+    <title>tiinytools | Fast, lightweight utilities</title>
     <link rel="icon" type="image/png" href="assets/logo.png?v=2">
     <!-- Meta tags for SEO -->
     <meta name="description" content="A premium, elegant, and secure suite of client-side web tools. Calculate percentages, analyze text, split or merge PDFs in the browser without uploading files.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
     <!-- Main Style -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/tools/percentage.css">
     <link rel="stylesheet" href="css/tools/pdf.css">
     <link rel="stylesheet" href="css/tools/text.css">
     <link rel="stylesheet" href="css/tools/pdftools.css">
+    <link rel="stylesheet" href="css/tools/bulk-status.css">
+    <link rel="stylesheet" href="css/tools/redirect-checker.css">
 </head>
 <body>
     <div class="app-container">
@@ -24,8 +26,8 @@
         <aside class="app-sidebar" id="appSidebar">
             <div class="sidebar-header">
                 <div class="brand-logo">
-                    <img src="assets/logo.png?v=2" alt="tiinytools logo" class="logo-img">
-                    <span class="logo-text"><span class="accent-text">tiinytools</span></span>
+                    <img src="assets/logo.png" alt="tiinytools logo" class="logo-img">
+                    <span class="logo-text">tiinytools</span>
                 </div>
                 <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close sidebar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -50,27 +52,39 @@
                     </li>
                     <li class="nav-separator">Available Tools</li>
                     <li>
-                        <a href="#percentage" class="nav-item" id="nav-percentage">
+                        <a href="#percentage-calculator" class="nav-item" id="nav-percentage-calculator">
                             <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
                             <span>Percentage Calc</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#pdf" class="nav-item" id="nav-pdf">
+                        <a href="#pdf-split-join" class="nav-item" id="nav-pdf-split-join">
                             <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="15" x2="15" y2="15"></line></svg>
                             <span>PDF Split & Join</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#pdftools" class="nav-item" id="nav-pdftools">
-                            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <a href="#pdf-compress-convert" class="nav-item" id="nav-pdf-compress-convert">
+                            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                             <span>PDF Compress &amp; Convert</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#text" class="nav-item" id="nav-text">
+                        <a href="#character-counter-text-analyzer" class="nav-item" id="nav-character-counter-text-analyzer">
                             <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
                             <span>Text Analyzer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#url-http-status-cheker" class="nav-item" id="nav-url-http-status-cheker">
+                            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                            <span>URL HTTP Status Checker</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#url-redirect-checker" class="nav-item" id="nav-url-redirect-checker">
+                            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                            <span>URL Redirect Checker</span>
                         </a>
                     </li>
                 </ul>
@@ -97,8 +111,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
             <div class="brand-logo-mobile">
-                <img src="assets/logo.png?v=2" alt="tiinytools logo" class="logo-img">
-                <span class="logo-text"><span class="accent-text">tiinytools</span></span>
+                <img src="assets/logo.png" alt="tiinytools logo" class="logo-img">
+                <span class="logo-text">tiinytools</span>
             </div>
             <div class="mobile-theme-toggle">
                 <button class="theme-toggle-btn-mobile" id="themeToggleBtnMobile" aria-label="Toggle theme">
@@ -114,7 +128,7 @@
                 <!-- Dashboard Home (default view) -->
                 <div id="home-view" class="view-panel active">
                     <div class="view-header">
-                        <h1 class="view-title">All Utilities</h1>
+                        <h1 class="view-title">All Tools</h1>
                         <p class="view-subtitle">Fast, lightweight, secure, and completely private. All processing happens locally in your browser.</p>
                     </div>
 
@@ -125,17 +139,27 @@
                         </div>
                     </div>
 
+                    <!-- Filter Tags (ordered by tool quantity) -->
+                    <div class="dashboard-tags-filter" id="tagsFilterContainer">
+                        <button class="filter-tag-btn active" data-filter="all">ALL</button>
+                        <button class="filter-tag-btn" data-filter="pdf">PDF</button>
+                        <button class="filter-tag-btn" data-filter="math">MATH</button>
+                        <button class="filter-tag-btn" data-filter="text">TEXT</button>
+                        <button class="filter-tag-btn" data-filter="dev">DEV</button>
+                        <button class="filter-tag-btn" data-filter="seo">SEO</button>
+                    </div>
+
                     <!-- Tools Grid -->
                     <div class="tools-grid" id="toolsGrid">
                         <!-- Percentage Calculator Card -->
-                        <a href="#percentage" class="tool-card" data-tags="math,percentage,calculator,finance">
+                        <a href="#percentage-calculator" class="tool-card" data-tags="math,percentage,calculator,finance">
                             <div class="tool-card-icon math-color">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
                             </div>
                             <div class="tool-card-content">
                                 <div class="tool-card-header">
                                     <h3 class="tool-card-title">Percentage Calculator</h3>
-                                    <span class="tool-badge badge-math">Math</span>
+                                    <span class="tool-badge">[MATH]</span>
                                 </div>
                                 <p class="tool-card-desc">Calculate percentage of a value, percentage difference, increases, and fraction conversions instantly as you type.</p>
                                 <span class="tool-card-action">
@@ -146,14 +170,14 @@
                         </a>
 
                         <!-- PDF Split & Join Card -->
-                        <a href="#pdf" class="tool-card" data-tags="pdf,split,merge,join,document,utility">
+                        <a href="#pdf-split-join" class="tool-card" data-tags="pdf,split,merge,join,document,utility">
                             <div class="tool-card-icon pdf-color">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="15" x2="15" y2="15"></line></svg>
                             </div>
                             <div class="tool-card-content">
                                 <div class="tool-card-header">
                                     <h3 class="tool-card-title">PDF Split & Join</h3>
-                                    <span class="tool-badge badge-pdf">Document</span>
+                                    <span class="tool-badge">[PDF]</span>
                                 </div>
                                 <p class="tool-card-desc">Split pages from a PDF file, or merge multiple PDF documents together. Processes 100% locally in your browser.</p>
                                 <span class="tool-card-action">
@@ -164,14 +188,14 @@
                         </a>
 
                         <!-- PDF Compress & Convert Card -->
-                        <a href="#pdftools" class="tool-card" data-tags="pdf,compress,convert,word,powerpoint,excel,image,png,docx">
+                        <a href="#pdf-compress-convert" class="tool-card" data-tags="pdf,compress,convert,word,powerpoint,excel,image,png,docx">
                             <div class="tool-card-icon pdf-color">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                             </div>
                             <div class="tool-card-content">
                                 <div class="tool-card-header">
                                     <h3 class="tool-card-title">PDF Compress &amp; Convert</h3>
-                                    <span class="tool-badge badge-pdf">Document</span>
+                                    <span class="tool-badge">[PDF]</span>
                                 </div>
                                 <p class="tool-card-desc">Reduce PDF file size locally in your browser, or convert PDFs to Word, PowerPoint, Excel and PNG images.</p>
                                 <span class="tool-card-action">
@@ -182,16 +206,52 @@
                         </a>
 
                         <!-- Character Counter Card -->
-                        <a href="#text" class="tool-card" data-tags="text,words,counter,character,letters,editor">
+                        <a href="#character-counter-text-analyzer" class="tool-card" data-tags="text,words,counter,character,letters,editor">
                             <div class="tool-card-icon text-color">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
                             </div>
                             <div class="tool-card-content">
                                 <div class="tool-card-header">
-                                    <h3 class="tool-card-title">Character Counter</h3>
-                                    <span class="tool-badge badge-text">Text</span>
+                                    <h3 class="tool-card-title">Character Counter & Text Analyzer</h3>
+                                    <span class="tool-badge">[TEXT]</span>
                                 </div>
                                 <p class="tool-card-desc">Analyze text length in real-time. Count characters, words, sentences, paragraphs. Convert case and estimate reading times.</p>
+                                <span class="tool-card-action">
+                                    <span>Launch Tool</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- URL HTTP Status Checker Card -->
+                        <a href="#url-http-status-cheker" class="tool-card" data-tags="http,status,bulk,header,server,developer">
+                            <div class="tool-card-icon network-color">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                            </div>
+                            <div class="tool-card-content">
+                                <div class="tool-card-header">
+                                    <h3 class="tool-card-title">URL HTTP Status Checker</h3>
+                                    <span class="tool-badge">[DEV]</span>
+                                </div>
+                                <p class="tool-card-desc">Check the HTTP response status codes, redirect destinations, and response headers for multiple URLs in bulk.</p>
+                                <span class="tool-card-action">
+                                    <span>Launch Tool</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- URL Redirect Checker Card -->
+                        <a href="#url-redirect-checker" class="tool-card" data-tags="url,redirect,chain,301,302,tracker,seo">
+                            <div class="tool-card-icon network-color">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                            </div>
+                            <div class="tool-card-content">
+                                <div class="tool-card-header">
+                                    <h3 class="tool-card-title">URL Redirect Checker</h3>
+                                    <span class="tool-badge">[SEO]</span>
+                                </div>
+                                <p class="tool-card-desc">Track the complete path a URL takes, identifying redirect chains, intermediate URLs, status codes, and headers.</p>
                                 <span class="tool-card-action">
                                     <span>Launch Tool</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -206,7 +266,7 @@
                     <div class="tool-view-header">
                         <button class="back-dashboard-btn" id="backDashboardBtn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                            <span>Back to Utilities</span>
+                            <span>Back to All Tools</span>
                         </button>
                         <div class="tool-meta">
                             <h1 class="tool-title" id="toolTitle">Tool Title</h1>

@@ -1,0 +1,368 @@
+/* Styles for Bulk HTTP Status Tool */
+
+.bulk-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bulk-input-section {
+    position: relative;
+}
+
+.bulk-textarea {
+    width: 100%;
+    min-height: 140px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 16px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    resize: vertical;
+    transition: all 0.2s ease;
+}
+
+.bulk-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.bulk-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Options Bar */
+.bulk-options-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: color 0.2s ease;
+}
+
+.bulk-options-toggle:hover {
+    color: var(--primary);
+}
+
+.bulk-options-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    background-color: rgba(20, 27, 45, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+    animation: slideDown 0.25s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bulk-option-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bulk-option-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.bulk-select, .bulk-input {
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.bulk-select:focus, .bulk-input:focus {
+    border-color: var(--primary);
+}
+
+/* Actions Section */
+.bulk-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* Live Progress & Stats Dashboard */
+.bulk-progress-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bulk-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bulk-progress-text {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.bulk-progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: var(--bg-primary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bulk-progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.2s ease;
+}
+
+/* Stats Counter Grid */
+.bulk-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.bulk-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(20, 27, 45, 0.2);
+}
+
+.bulk-stat-val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.bulk-stat-lbl {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* Stat color variants */
+.stat-success { border-color: rgba(16, 185, 129, 0.2); color: var(--success); }
+.stat-redirect { border-color: rgba(245, 158, 11, 0.2); color: var(--primary); }
+.stat-client-err { border-color: rgba(245, 158, 11, 0.2); color: var(--warning); }
+.stat-server-err { border-color: rgba(239, 68, 68, 0.2); color: var(--danger); }
+.stat-failed { border-color: rgba(239, 68, 68, 0.3); color: #ef4444; }
+
+/* Filter & Export Bar */
+.bulk-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.bulk-filter-input-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 320px;
+}
+
+.bulk-filter-input-wrapper input {
+    width: 100%;
+    padding: 8px 12px 8px 34px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+}
+
+.bulk-filter-input-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.bulk-filter-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+/* Results Table */
+.bulk-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: rgba(20, 27, 45, 0.15);
+}
+
+.bulk-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.875rem;
+}
+
+.bulk-table th {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-secondary);
+    padding: 12px 16px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
+}
+
+.bulk-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    word-break: break-all;
+}
+
+.bulk-table tr:last-child td {
+    border-bottom: none;
+}
+
+.bulk-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.bulk-table tbody tr:hover {
+    background-color: var(--bg-card-hover);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-2xx { background-color: rgba(16, 185, 129, 0.12); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.25); }
+.badge-3xx { background-color: rgba(245, 158, 11, 0.12); color: var(--primary); border: 1px solid rgba(245, 158, 11, 0.25); }
+.badge-4xx { background-color: rgba(245, 158, 11, 0.12); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.25); }
+.badge-5xx { background-color: rgba(239, 68, 68, 0.12); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.25); }
+.badge-err { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+/* Details Row */
+.bulk-details-row {
+    background-color: rgba(9, 13, 22, 0.4);
+}
+
+.bulk-details-cell {
+    padding: 0 !important;
+}
+
+.bulk-details-content {
+    padding: 16px 24px;
+    border-top: 1px dashed var(--border-color);
+    border-bottom: 1px dashed var(--border-color);
+    animation: slideDown 0.2s ease-out;
+}
+
+.bulk-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.bulk-details-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.bulk-headers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.8rem;
+    background-color: var(--bg-primary);
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.bulk-header-item {
+    word-break: break-all;
+}
+
+.bulk-header-name {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.bulk-header-val {
+    color: var(--text-primary);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .bulk-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .bulk-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .bulk-stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .bulk-filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .bulk-filter-input-wrapper {
+        max-width: none;
+    }
+}

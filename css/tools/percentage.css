@@ -98,8 +98,8 @@
 }
 
 .calc-result-bar.has-value {
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 0 12px rgba(99, 102, 241, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 12px var(--primary-glow);
 }
 
 .result-label {
@@ -117,7 +117,7 @@
 }
 
 .result-value {
-    font-family: 'Plus Jakarta Sans', monospace;
+    font-family: 'Geist Mono', monospace;
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-primary);

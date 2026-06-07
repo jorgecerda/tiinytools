@@ -75,7 +75,7 @@
 }
 
 .merge-item:hover {
-    border-color: rgba(99, 102, 241, 0.3);
+    border-color: var(--border-color-hover);
 }
 
 .merge-item-info {

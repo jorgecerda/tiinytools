@@ -20,34 +20,12 @@ export default {
 
                 <!-- Tabs -->
                 <div class="pdf-tabs">
-                    <button class="pdf-tab-btn active" id="tab-btn-merge">Merge PDFs (Join)</button>
-                    <button class="pdf-tab-btn" id="tab-btn-split">Split PDF (Extract Pages)</button>
+                    <button class="pdf-tab-btn active" id="tab-btn-split">Split PDF (Extract Pages)</button>
+                    <button class="pdf-tab-btn" id="tab-btn-merge">Merge PDFs (Join Pages)</button>
                 </div>
 
-                <!-- Tab Panel 1: Merge PDFs -->
-                <div class="pdf-tab-panel active" id="panel-merge">
-                    <div class="dropzone-premium" id="merge-dropzone">
-                        <svg class="dropzone-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                        <p class="dropzone-text">Drag & drop multiple PDF files here, or <span style="color:var(--primary); font-weight:600;">browse files</span></p>
-                        <p class="dropzone-subtext">Merge files sequentially into a single PDF document.</p>
-                        <input type="file" id="merge-file-input" multiple accept="application/pdf" style="display: none;">
-                    </div>
-
-                    <!-- Merge Queue -->
-                    <div class="merge-queue" id="merge-queue-container" style="display: none;"></div>
-
-                    <!-- Merge controls -->
-                    <div class="merge-controls" id="merge-controls-bar" style="display: none;">
-                        <button class="btn-secondary" id="btn-clear-merge">Clear All</button>
-                        <button class="btn-primary" id="btn-execute-merge">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                            <span>Merge PDFs</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Tab Panel 2: Split PDFs -->
-                <div class="pdf-tab-panel" id="panel-split">
+                <!-- Tab Panel 1: Split PDFs -->
+                <div class="pdf-tab-panel active" id="panel-split">
                     <!-- Dropzone -->
                     <div class="dropzone-premium" id="split-dropzone">
                         <svg class="dropzone-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2-2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
@@ -79,6 +57,28 @@ export default {
 
                     <!-- Scrollable pages grid -->
                     <div class="split-pages-grid" id="split-pages-grid" style="display: none;"></div>
+                </div>
+
+                <!-- Tab Panel 2: Merge PDFs -->
+                <div class="pdf-tab-panel" id="panel-merge">
+                    <div class="dropzone-premium" id="merge-dropzone">
+                        <svg class="dropzone-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2-2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <p class="dropzone-text">Drag & drop multiple PDF files here, or <span style="color:var(--primary); font-weight:600;">browse files</span></p>
+                        <p class="dropzone-subtext">Merge files sequentially into a single PDF document.</p>
+                        <input type="file" id="merge-file-input" multiple accept="application/pdf" style="display: none;">
+                    </div>
+
+                    <!-- Merge Queue -->
+                    <div class="merge-queue" id="merge-queue-container" style="display: none;"></div>
+
+                    <!-- Merge controls -->
+                    <div class="merge-controls" id="merge-controls-bar" style="display: none;">
+                        <button class="btn-secondary" id="btn-clear-merge">Clear All</button>
+                        <button class="btn-primary" id="btn-execute-merge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            <span>Merge PDFs</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         `;

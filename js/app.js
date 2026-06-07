@@ -2,25 +2,35 @@
 
 // Registry of tools
 const TOOLS_REGISTRY = {
-    'percentage': {
+    'percentage-calculator': {
         title: 'Percentage Calculator',
         description: 'Calculate percentage of a value, percentage difference, increases, and fraction conversions instantly as you type.',
         modulePath: './tools/percentage.js'
     },
-    'pdf': {
+    'pdf-split-join': {
         title: 'PDF Split & Join',
         description: 'Split pages from a PDF file, or merge multiple PDF documents together. Processes 100% locally in your browser.',
         modulePath: './tools/pdf.js'
     },
-    'text': {
+    'character-counter-text-analyzer': {
         title: 'Character Counter & Text Analyzer',
         description: 'Analyze text length in real-time. Count characters, words, sentences, paragraphs. Convert case and estimate reading times.',
         modulePath: './tools/text.js'
     },
-    'pdftools': {
+    'pdf-compress-convert': {
         title: 'PDF Compress & Convert',
         description: 'Compress PDFs locally in your browser, or convert PDFs to Word, PowerPoint, Excel and PNG via CloudConvert.',
         modulePath: './tools/pdftools.js'
+    },
+    'url-http-status-cheker': {
+        title: 'URL HTTP Status Checker',
+        description: 'Check the HTTP response status codes, redirect destinations, and response headers for multiple URLs in bulk.',
+        modulePath: './tools/bulk-status.js'
+    },
+    'url-redirect-checker': {
+        title: 'URL Redirect Checker',
+        description: 'Track the complete path a URL takes, identifying redirect chains, intermediate URLs, status codes, and headers.',
+        modulePath: './tools/redirect-checker.js'
     }
 };
 
@@ -118,7 +128,7 @@ async function handleRoute() {
         toolView.style.display = 'none';
         homeView.style.display = 'block';
         document.getElementById('nav-home').classList.add('active');
-        document.title = 'tiinytools | Premium Developer & Document Utilities';
+        document.title = 'tiinytools | Fast, lightweight utilities';
     } else {
         // Load Selected Tool
         homeView.style.display = 'none';
@@ -137,8 +147,8 @@ async function handleRoute() {
         `;
 
         try {
-            // Lazy load the tool module
-            const module = await import(toolMeta.modulePath);
+            // Lazy load the tool module (with cache buster)
+            const module = await import(`${toolMeta.modulePath}?v=${Date.now()}`);
             toolContainer.innerHTML = ''; // Clear loader
             
             // Render the tool
@@ -164,21 +174,29 @@ async function handleRoute() {
     // Close mobile drawer if open
     document.getElementById('appSidebar').classList.remove('open');
 }
-
 // 3. Search and Filtering System
 function initSearch() {
     const sidebarSearch = document.getElementById('toolSearchInput');
     const dashboardSearch = document.getElementById('dashboardSearchInput');
     const toolCards = document.querySelectorAll('.tool-card');
+    let activeFilterTag = 'all';
 
-    function filterTools(query) {
-        const q = query.toLowerCase().trim();
+    function applyFilters() {
+        const query = (dashboardSearch?.value || sidebarSearch?.value || '').toLowerCase().trim();
+        const tag = activeFilterTag.toLowerCase();
+
         toolCards.forEach(card => {
             const title = card.querySelector('.tool-card-title').textContent.toLowerCase();
             const desc = card.querySelector('.tool-card-desc').textContent.toLowerCase();
             const tags = card.getAttribute('data-tags').toLowerCase();
             
-            if (title.includes(q) || desc.includes(q) || tags.includes(q)) {
+            // Extract badge text safely, removing any brackets if they exist
+            const badgeText = card.querySelector('.tool-badge').textContent.toLowerCase().replace(/[\[\]]/g, '').trim();
+
+            const matchesSearch = !query || title.includes(query) || desc.includes(query) || tags.includes(query);
+            const matchesTag = tag === 'all' || badgeText === tag;
+
+            if (matchesSearch && matchesTag) {
                 card.style.display = 'flex';
             } else {
                 card.style.display = 'none';
@@ -186,13 +204,24 @@ function initSearch() {
         });
     }
 
+    // Initialize tag filters
+    const tagButtons = document.querySelectorAll('.filter-tag-btn');
+    tagButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tagButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilterTag = btn.getAttribute('data-filter');
+            applyFilters();
+        });
+    });
+
     if (sidebarSearch) {
         sidebarSearch.addEventListener('input', (e) => {
             // Sync with dashboard search input if on dashboard
             if (dashboardSearch) {
                 dashboardSearch.value = e.target.value;
             }
-            filterTools(e.target.value);
+            applyFilters();
             
             // If user searches from a tool view, redirect to home to show results
             if (window.location.hash !== '#home' && window.location.hash !== '') {
@@ -206,11 +235,10 @@ function initSearch() {
             if (sidebarSearch) {
                 sidebarSearch.value = e.target.value;
             }
-            filterTools(e.target.value);
+            applyFilters();
         });
     }
 }
-
 // 4. Mobile Drawer Controller
 function initMobileNavigation() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');

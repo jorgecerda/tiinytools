@@ -26,10 +26,10 @@ export default {
                 <!-- Tabs -->
                 <div class="pdftools-tabs">
                     <button class="pdftools-tab-btn active" id="pdftab-compress">
-                        ⚡ Compress PDF
+                        Compress PDF
                     </button>
                     <button class="pdftools-tab-btn" id="pdftab-convert">
-                        🔄 Convert PDF
+                        Convert PDF
                     </button>
                 </div>
 
@@ -54,13 +54,13 @@ export default {
                     <div class="format-selector" style="margin-top:20px;">
                         <span class="format-selector-label">Compression Level</span>
                         <button class="format-pill" data-quality="high" id="quality-high">
-                            🔵 High Quality
+                            High Quality
                         </button>
                         <button class="format-pill active" data-quality="balanced" id="quality-balanced">
-                            🟢 Balanced
+                            Balanced
                         </button>
                         <button class="format-pill" data-quality="max" id="quality-max">
-                            🟡 Max Compression
+                            Max Compression
                         </button>
                     </div>
 
@@ -117,16 +117,16 @@ export default {
                     <div class="format-selector" style="margin-top:20px;">
                         <span class="format-selector-label">Output Format</span>
                         <button class="format-pill active" data-format="docx" id="fmt-docx">
-                            <span class="format-pill-icon">📄</span> Word (.docx)
+                            Word (.docx)
                         </button>
                         <button class="format-pill" data-format="pptx" id="fmt-pptx">
-                            <span class="format-pill-icon">📊</span> PowerPoint (.pptx)
+                            PowerPoint (.pptx)
                         </button>
                         <button class="format-pill" data-format="xlsx" id="fmt-xlsx">
-                            <span class="format-pill-icon">📈</span> Excel (.xlsx)
+                            Excel (.xlsx)
                         </button>
                         <button class="format-pill" data-format="png" id="fmt-png">
-                            <span class="format-pill-icon">🖼️</span> Image (.png)
+                            Image (.png)
                         </button>
                     </div>
 
